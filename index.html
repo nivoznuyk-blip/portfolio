@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Никита Вознюк — AI Creator / AI Designer</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#150A0F">
+<meta name="description" content="Никита Вознюк — AI Creator и AI Designer из Минска. Рекламные ролики, каталожные съёмки, консистентные персонажи, макеты интерфейсов.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#150A0F;
+  --ink-2:#1F1017;
+  --wine:#6E1F33;
+  --wine-dim:#3A1420;
+  --bone:#EFE6DB;
+  --muted:#A08E8A;
+  --candle:#E2A34C;
+  --rule:rgba(239,230,219,.14);
+  --display:"Instrument Serif",Georgia,serif;
+  --body:"Manrope",system-ui,-apple-system,sans-serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ink);color:var(--bone);
+  font-family:var(--body);font-weight:300;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:96px 0 72px;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:-40% -20% auto 30%;height:820px;
+  background:radial-gradient(closest-side,rgba(226,163,76,.16),rgba(226,163,76,0) 70%);
+  pointer-events:none;
+}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--candle)}
+h1{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(46px,9vw,104px);line-height:.94;margin:18px 0 0;letter-spacing:-.01em;
+}
+h1 em{font-style:italic;color:var(--candle)}
+.lede{max-width:52ch;margin:26px 0 0;font-size:clamp(16px,2.1vw,19px);color:#DCCFC6}
+.stack{
+  margin-top:40px;padding-top:18px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:12px;color:var(--muted);
+  display:flex;flex-wrap:wrap;gap:8px 26px;
+}
+.stack b{color:var(--bone);font-weight:400}
+
+/* ---------- case ---------- */
+.case{padding:72px 0;border-top:1px solid var(--rule)}
+.case-head{margin-bottom:34px}
+.tag{
+  font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink);background:var(--candle);padding:3px 9px;border-radius:2px;display:inline-block;
+}
+.case h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,5vw,52px);line-height:1.04;margin:16px 0 0}
+.case p{max-width:60ch;margin:14px 0 0;color:#D6C8BF}
+.slate{
+  margin-top:20px;font-family:var(--mono);font-size:11.5px;color:var(--muted);
+  display:flex;flex-wrap:wrap;gap:6px 0;
+}
+.slate span{padding-right:16px;margin-right:16px;border-right:1px solid var(--rule)}
+.slate span:last-child{border:0;margin:0;padding:0}
+.note{
+  margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--candle);opacity:.85;
+}
+
+/* ---------- media ---------- */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.shot,.clip{margin:0;position:relative;background:var(--ink-2);border-radius:3px;overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover}
+.clip video{width:100%;background:#000}
+figcaption{
+  font-family:var(--mono);font-size:11px;color:var(--muted);
+  padding:9px 2px 0;
+}
+.lead-clip{max-width:420px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+.crop34 .shot img{aspect-ratio:3/4}
+.crop11 .shot img{aspect-ratio:1/1}
+
+/* ---------- contact ---------- */
+.contact{padding:88px 0 110px;border-top:1px solid var(--rule)}
+.contact h2{font-family:var(--display);font-weight:400;font-size:clamp(32px,6vw,64px);margin:14px 0 0}
+.links{margin-top:22px;display:flex;flex-wrap:wrap;gap:14px 34px;font-family:var(--mono);font-size:14px}
+.links a{text-decoration:none;border-bottom:1px solid var(--candle);padding-bottom:3px}
+.links a:hover{color:var(--candle)}
+footer{font-family:var(--mono);font-size:11px;color:var(--muted);padding:0 0 48px}
+
+.g4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:820px){.grid.g4{grid-template-columns:repeat(2,1fr)}}
+.ui .shot{background:#0B0810}
+.ui .shot img{width:100%;height:auto}
+@media (max-width:820px){.grid.g2.ui{grid-template-columns:1fr}}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.cols h3{font-family:var(--body);font-weight:600;font-size:15px;letter-spacing:.01em;margin:0 0 8px}
+.cols p{font-size:15px;margin:0;color:#CBBBB2}
+.cols .lab{font-family:var(--mono);font-size:11px;color:var(--candle);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:12px}
+@media (max-width:820px){.cols{grid-template-columns:1fr;gap:26px}}
+:focus-visible{outline:2px solid var(--candle);outline-offset:3px}
+@media (max-width:820px){
+  .row{grid-template-columns:1fr;gap:24px}
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .hero{padding:64px 0 48px}
+  .case{padding:52px 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">AI Creator · AI Designer · Минск</div>
+    <h1>Никита<br>Вознюк<em>.</em></h1>
+    <p class="lede">Более четырёх лет работаю с генеративными нейросетями. Закрываю задачу целиком —
+    от концепции и промптов до готового ролика, ключ-арта или макета. Подбираю модели под задачу,
+    стиль и бюджет, держу единый визуальный стиль на серии материалов.</p>
+    <div class="stack">
+      <span><b>Изображение:</b> GPT Image · Nano Banana · Midjourney · Flux · Stable Diffusion · Leonardo · Recraft · Ideogram</span>
+      <span><b>Видео:</b> Kling · Runway · Luma · Sora · Hailuo · Higgsfield · Veo</span>
+      <span><b>Звук, озвучка, липсинк:</b> ElevenLabs · Suno · HeyGen · Hedra</span>
+      <span><b>Постпродакшн:</b> Photoshop · After Effects · Premiere · DaVinci · CapCut</span>
+      <span><b>Дизайн и автоматизации:</b> Figma · Claude Design · n8n · Make · API OpenAI и Anthropic</span>
+    </div>
+  </div>
+</header>
+
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="tag">каталог одежды</span>
+      <h2>Лукбук без студии</h2>
+      <p>Одна модель, один фон, один свет — и целая линейка образов. Кадры собраны так,
+      чтобы их можно было ставить в карточку товара: ростовые планы, деталь посадки, вид со спины.
+      Главная сложность здесь — удержать одного и того же человека и одинаковый свет от кадра к кадру.</p>
+      <div class="slate">
+        <span>студийная циклорама</span><span>8 образов</span><span>ростовые и поясные планы</span><span>2026</span>
+      </div>
+    </div>
+    <div class="grid g3 crop34">
+      <figure class="shot"><img loading="lazy" src="media/shirt_front.jpg" alt="Образ 01 — фронт"><figcaption>Образ 01 — фронт</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/shirt_back.jpg" alt="Образ 01 — спина"><figcaption>Образ 01 — спина</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/plaid.jpg" alt="Образ 02"><figcaption>Образ 02</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/polo_full.jpg" alt="Образ 03 — ростовой"><figcaption>Образ 03 — ростовой</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/sweat.jpg" alt="Образ 04 — ростовой"><figcaption>Образ 04 — ростовой</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/knit_full.jpg" alt="Образ 05 — женская линия"><figcaption>Образ 05 — женская линия</figcaption></figure>
+    </div>
+    <div style="margin-top:34px" class="row">
+      <div class="grid g2" style="align-self:start">
+      <figure class="clip"><video src="media/hoodie.mp4" poster="media/hoodie.jpg" controls preload="metadata" playsinline></video><figcaption>Уличная линия — 15 сек</figcaption></figure>
+      <figure class="clip"><video src="media/coat.mp4" controls preload="metadata" playsinline poster="media/coat.jpg"></video><figcaption>Премиальная линия — 15 сек</figcaption></figure>
+    </div>
+      <div>
+        <p style="margin-top:0">Тот же принцип в движении: модель, разворот, деталь ткани, проходка.
+        Два ролика — уличный минимализм и премиальная линия в интерьере: одна и та же логика съёмки,
+        разный характер света и темпа. Формат под ленту маркетплейса и соцсети.</p>
+        <div class="slate"><span>вертикаль 9:16</span><span>15 сек каждый</span><span>2026</span></div>
+        <div class="note">На клипах остаётся вотермарка сервиса генерации — исходники без неё доступны по запросу.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="tag">коммерческие заказы</span>
+      <h2>Реклама для карточек и ленты</h2>
+      <p>Три ролика, сделанных под задачу продавца: проблема — продукт — действие, укладка в 15–30 секунд,
+      субтитры, закадровый голос, финальная плашка с брендом. Формат вертикальный, под маркетплейс и соцсети.</p>
+      <div class="slate">
+        <span>уход за кожей · БАД · садовая техника</span><span>15–27 сек</span><span>сценарий, генерация, монтаж, субтитры</span>
+      </div>
+      <div class="note">На двух роликах осталась вотермарка сервиса аватаров — версии без неё доступны по запросу.</div>
+    </div>
+    <div class="grid g3">
+      <figure class="clip"><video src="media/alteya.mp4" poster="media/alteya.jpg" controls preload="metadata" playsinline></video><figcaption>Энзимная пудра — карточка на маркетплейсе, 27 сек</figcaption></figure>
+      <figure class="clip"><video src="media/qeep.mp4" poster="media/qeep.jpg" controls preload="metadata" playsinline></video><figcaption>Магний — ролик для ленты, 25 сек</figcaption></figure>
+      <figure class="clip"><video src="media/champion.mp4" poster="media/champion.jpg" controls preload="metadata" playsinline></video><figcaption>Садовая техника — продуктовый ролик, 15 сек</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="tag">персонаж</span>
+      <h2>Одна героиня, десять городов</h2>
+      <p>Серия о консистентности: один и тот же человек в неоне Токио, снегопаде, каменном переулке,
+      уличном рынке и в свете фар на мосту. Лицо, пальто и характер света держатся от кадра к кадру —
+      это то, что превращает набор картинок в кампанию.</p>
+      <div class="slate">
+        <span>ночная натура</span><span>киноплёночное зерно</span><span>вертикаль 9:16</span><span>2026</span>
+      </div>
+    </div>
+    <div class="grid g3 crop34">
+      <figure class="shot"><img loading="lazy" src="media/tokyo.jpg" alt="Токио"><figcaption>Токио</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/snow.jpg" alt="Снегопад"><figcaption>Снегопад</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/alley.jpg" alt="Переулок"><figcaption>Переулок</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/market.jpg" alt="Рынок"><figcaption>Рынок</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/bridge.jpg" alt="Мост, свет фар"><figcaption>Мост, свет фар</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/grain.jpg" alt="Портрет крупно"><figcaption>Портрет крупно</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="tag">анимация</span>
+      <h2>Рисованный сторителлинг</h2>
+      <p>Четыре повествовательных ролика — от восемнадцати секунд до минуты с лишним: чернильный
+      хоррор от первого лица, античная сага, история Рождества, хроника большого города.
+      Каждый держит собственный рисованный стиль от первого кадра до последнего. На длинном
+      хронометраже это перестаёт быть задачей генерации и становится задачей драматургии:
+      палитра не плывёт между сценами, а темп обязан удержать зрителя до конца.</p>
+      <div class="slate">
+        <span>2D-стилизация</span><span>18–78 сек</span><span>концепция, раскадровка, генерация, сборка</span><span>2026</span>
+      </div>
+    </div>
+    <div class="grid g4">
+      <figure class="clip"><video src="media/viy.mp4" poster="media/viy.jpg" controls preload="metadata" playsinline></video><figcaption>«Вий: Чернильная ночь» — 18 сек</figcaption></figure>
+      <figure class="clip"><video src="media/myth.mp4" poster="media/myth.jpg" controls preload="metadata" playsinline></video><figcaption>Античная сага — 50 сек</figcaption></figure>
+      <figure class="clip"><video src="media/xmas.mp4" controls preload="metadata" playsinline poster="media/xmas.jpg"></video><figcaption>История Рождества — 78 сек</figcaption></figure>
+      <figure class="clip"><video src="media/saga.mp4" controls preload="metadata" playsinline poster="media/saga.jpg"></video><figcaption>Хроника города — 68 сек</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="tag">стилизация и предметка</span>
+      <h2>Фактура, свет, эпоха</h2>
+      <p>Рекламная предметка для косметики и парфюма — жёсткая тень на штукатурке, зелёный оникс, мокрый камень.
+      И отдельная линия: реконструкция архивной фотографии шестидесятых, где убедительность держится
+      на плёночном зерне, люминесцентном свете и дыме под потолком.</p>
+      <div class="slate">
+        <span>предметная реклама</span><span>историческая стилизация</span><span>статика и оживление</span>
+      </div>
+    </div>
+    <div class="grid g3 crop11">
+      <figure class="shot"><img loading="lazy" src="media/perfume.jpg" alt="Парфюм — жёсткий свет"><figcaption>Парфюм — жёсткий свет</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/serum.jpg" alt="Сыворотка — оникс и мох"><figcaption>Сыворотка — оникс и мох</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/wabi.jpg" alt="Уход — фактура дерева"><figcaption>Уход — фактура дерева</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/plate.jpg" alt="Керамика — мягкий свет"><figcaption>Керамика — мягкий свет</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/soviet.jpg" alt="Архив, 1960-е — статика"><figcaption>Архив, 1960-е — статика</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/hands.jpg" alt="Деталь: руки и вода"><figcaption>Деталь: руки и вода</figcaption></figure>
+    </div>
+    <div style="margin-top:34px" class="row">
+      <div class="lead-clip"><figure class="clip"><video src="media/sovietv.mp4" poster="media/sovietv.jpg" controls preload="metadata" playsinline></video><figcaption>Оживление архивного кадра, 5 сек</figcaption></figure></div>
+      <div>
+        <p style="margin-top:0">Статичный кадр, доведённый до движения: дым идёт вверх, лампа мерцает,
+        люди чуть переступают. Приём для музейных, документальных и ретро-проектов.</p>
+        <div class="slate"><span>image-to-video</span><span>5 сек</span><span>2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="tag">бренд-концепты</span>
+      <h2>Ролики для существующих брендов</h2>
+      <p>Спекулятивные работы: беру знакомый бренд и делаю ролик так, как сделал бы для клиента —
+      с его тональностью, палитрой и продуктом в кадре. Это способ показать, что визуальный язык
+      бренда считывается и воспроизводится, а не придумывается с нуля под удобную задачу.</p>
+      <div class="slate">
+        <span>вертикаль 9:16</span><span>10–31 сек</span><span>концепт, не заказ бренда</span>
+      </div>
+      <div class="note">Все ролики в этом блоке — самостоятельные концепты. Заказа от правообладателей не было.</div>
+    </div>
+    <div class="grid g2">
+      <figure class="clip"><video src="media/oreo.mp4" controls preload="metadata" playsinline poster="media/oreo.jpg"></video><figcaption>Печенье и ритейл — 31 сек</figcaption></figure>
+      <figure class="clip"><video src="media/cola.mp4" controls preload="metadata" playsinline poster="media/cola.jpg"></video><figcaption>Новогодний ролик — 10 сек</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="tag">интерфейсы</span>
+      <h2>Marquee — портал о кассовых сборах</h2>
+      <p>Макет новостного портала о кино: шесть экранов, дизайн-система и адаптив под 390.
+      Визуальный язык взят у американских кинотеатров тридцатых–пятидесятых — латунь, оксблад,
+      лампы на маркизе, — но подчинён цифрам: на экране правит сумма сборов, а декор уходит в рамку.
+      Отдельно проработаны состояния, которых обычно нет в макетах: загрузка, пустой экран, частичные данные.</p>
+      <div class="slate">
+        <span>6 экранов</span><span>десктоп 1440 и мобайл 390</span><span>дизайн-система и состояния</span><span>Claude Design</span>
+      </div>
+    </div>
+    <div class="grid g2 ui">
+      <figure class="shot"><img loading="lazy" src="media/ui-box-office.jpg" alt="Дизайн-система: токены, типографика, состояния"><figcaption>Дизайн-система: токены, типографика, состояния</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/ui-home.jpg" alt="Главная — сборы недели как герой экрана"><figcaption>Главная — сборы недели как герой экрана</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/ui-title-page.jpg" alt="Карточка фильма — метрики, график, франшиза"><figcaption>Карточка фильма — метрики, график, франшиза</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/ui-release-calendar.jpg" alt="Календарь релизов — фильтры как интерфейс"><figcaption>Календарь релизов — фильтры как интерфейс</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="tag">интерфейсы</span>
+      <h2>«Подъём» — магазин коробок с шарами</h2>
+      <p>Интернет-магазин коробок-сюрпризов с гелиевыми шарами: доставка по Минску за два часа, круглосуточно. Весь макет подчинён одному — довести человека до заказа, пока он ещё в настроении. Заказ оформляется на одном экране за семь полей, без регистрации, подтверждение приходит в мессенджер. Внутри — сюрприз-режим, когда курьер не звонит получателю заранее, ночные интервалы доставки, открытка от руки и конструктор своей коробки.</p>
+      <div class="slate"><span>лендинг и магазин</span><span>4 экрана</span><span>десктоп 1440</span><span>Claude Design</span></div>
+    </div>
+    <div class="grid g2 ui">
+      <figure class="shot"><img loading="lazy" src="media/ui-podjom-home.jpg" alt="Главная — оффер, поводы, хиты, четыре шага"><figcaption>Главная — оффер, поводы, хиты, четыре шага</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/ui-podjom-product.jpg" alt="Карточка товара — конфигуратор и слоты доставки"><figcaption>Карточка товара — конфигуратор и слоты доставки</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/ui-podjom-checkout.jpg" alt="Оформление — один экран, семь полей, без регистрации"><figcaption>Оформление — один экран, семь полей, без регистрации</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="tag">интерфейсы</span>
+      <h2>Сканер состава продуктов</h2>
+      <p>Мобильное приложение, которое читает состав продукта по штрихкоду и даёт оценку. Контекст задан жёстко: человек стоит у полки, решение принимает за две-пять секунд, телефон в одной руке — отсюда крупная цифра оценки, один вывод на экран и минимум чтения. К макетам написана дизайн-система с правилами, которые нельзя нарушать: цвет никогда не единственный носитель смысла, ничего мельче 12pt, область касания не меньше 44 пикселей, никакой геймификации и тёмных паттернов в подписке. Формулировки шкалы вместо слов «вредно» и «полезно» — осознанная юридическая осторожность.</p>
+      <div class="slate"><span>мобильное приложение</span><span>8 экранов</span><span>дизайн-система и токены</span><span>Claude Design</span></div>
+    </div>
+    <div class="grid g2 ui">
+      <figure class="shot"><img loading="lazy" src="media/ui-scan-result.jpg" alt="Результат сканирования — оценка и личное предупреждение"><figcaption>Результат сканирования — оценка и личное предупреждение</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/ui-scan-states.jpg" alt="Системные состояния — офлайн, нераспознанный штрихкод, доступ к камере, загрузка"><figcaption>Системные состояния — офлайн, нераспознанный штрихкод, доступ к камере, загрузка</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/ui-scan-limits.jpg" alt="Мои ограничения — аллергены, непереносимости, диеты"><figcaption>Мои ограничения — аллергены, непереносимости, диеты</figcaption></figure>
+      <figure class="shot"><img loading="lazy" src="media/ui-scan-history.jpg" alt="История сканирований — список и пустое состояние"><figcaption>История сканирований — список и пустое состояние</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="tag">кроме визуала</span>
+      <h2>Что ещё закрываю</h2>
+      <p>Генерация — только часть работы. За четыре года набралось то, что обычно
+      приходится искать в разных людях.</p>
+    </div>
+    <div class="cols">
+      <div>
+        <span class="lab">Интерфейсы</span>
+        <h3>Дизайн сайтов и мобильных приложений</h3>
+        <p>Макет новостного портала о кино: шесть экранов, единая стилистика, адаптив.
+        Интерфейсы двух мобильных приложений — счётчика калорий и сканера составов продуктов.</p>
+      </div>
+      <div>
+        <span class="lab">Продукт</span>
+        <h3>Аналитика и логика продукта</h3>
+        <p>Анализ рынка и конкурентов, работа с метриками, проработка логики оценки продуктов
+        для приложения-сканера. Плюс три года собственного розничного бизнеса и команда из трёх человек.</p>
+      </div>
+      <div>
+        <span class="lab">Пайплайны</span>
+        <h3>Промпт-инжиниринг и автоматизации</h3>
+        <p>Написание, тестирование и оптимизация промптов под конкретную задачу.
+        Сборка цепочек в n8n и Make, работа напрямую с API OpenAI и Anthropic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <div class="eyebrow">Контакты</div>
+    <div class="links">
+      <a href="mailto:vozniuknik6@gmail.com">vozniuknik6@gmail.com</a>
+      <a href="tel:+375293032095">+375 29 303-20-95</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Никита Вознюк · Минск · портфолио 2026</div></footer>
+
+</body>
+</html>
