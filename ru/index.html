@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Никита Вознюк — AI Creator / AI Designer</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="alternate" hreflang="en" href="../">
+<link rel="alternate" hreflang="ru" href="./">
+<meta name="theme-color" content="#0B0B0C">
+<meta name="description" content="Никита Вознюк — AI Creator и AI Designer из Минска. Рекламные ролики, каталожные съёмки, контент для соцсетей, анимация, макеты интерфейсов.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0B0C;
+  --bg-2:#141415;
+  --red:#E8192C;
+  --white:#F4F2EE;
+  --gray:#8C8C8C;
+  --gray-2:#5E5E5E;
+  --rule:rgba(244,242,238,.12);
+  --display:"Oswald","Arial Narrow",Impact,sans-serif;
+  --body:"Inter Tight",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --pad:clamp(16px,4vw,48px);
+  --ease:cubic-bezier(.7,0,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#2a2a2b var(--bg)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#2a2a2b;border-radius:8px;border:2px solid var(--bg)}
+body{
+  margin:0;background:var(--bg);color:var(--white);
+  font-family:var(--body);font-weight:400;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;counter-reset:case;
+}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+::selection{background:var(--red);color:var(--bg)}
+.wrap{max-width:1360px;margin:0 auto;padding:0 var(--pad)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+
+/* ---------- перекат букв: ссылки, кнопки, контакты ---------- */
+.r{display:inline-block;overflow:hidden;height:var(--lh,1.25em);line-height:var(--lh,1.25em);vertical-align:top}
+.r>span{display:block;transition:transform .5s var(--ease);transition-delay:calc(var(--i,0) * 18ms)}
+.r>span+span{color:var(--roll,var(--red))}
+[data-roll]:hover .r>span,[data-roll]:focus-visible .r>span{transform:translateY(-100%)}
+
+/* ---------- шапка ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(11,11,12,.82);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;transition:border-color .3s ease;
+}
+.nav.scrolled{border-bottom-color:var(--rule)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.lang{display:flex;gap:18px;font-family:var(--mono);font-size:13px;letter-spacing:.12em;font-weight:500}
+.lang a{display:inline-block;color:var(--white);transition:color .25s ease,scale .3s var(--ease)}
+.lang a:hover{color:var(--red);scale:1.3}
+/* буквы гигантских слов растут под курсором */
+.idx-word .split>span,.about h2.giant .ch,.contact .giant .r{display:inline-block;transition:scale .35s var(--ease);transform-origin:50% 80%}
+.idx-word .split>span:hover,.about h2.giant .ch:hover,.contact .giant .r:hover{scale:1.14}
+@media (prefers-reduced-motion:reduce){.idx-word .split>span,.about h2.giant .ch,.contact .giant .r,.lang a{transition:none}}
+.lang a.on{color:var(--red)}
+.logo{font-family:var(--display);font-weight:700;font-size:26px;color:var(--red);letter-spacing:.01em;--lh:1.1em;--roll:var(--white)}
+.nav-links{display:flex;gap:30px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.btn-red{
+  font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--red);color:var(--bg);padding:11px 18px;border-radius:999px;--roll:var(--white);
+  transition:background .3s ease;
+}
+.btn-red:hover{background:#ff2a3d}
+
+/* ---------- первый экран ---------- */
+.hero{padding:150px 0 56px;position:relative}
+.hero .eyebrow{color:var(--gray);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.hero .eyebrow b{color:var(--white);font-weight:500}
+.giant{
+  font-family:var(--display);font-weight:700;text-transform:uppercase;color:var(--red);
+  line-height:.86;letter-spacing:-.005em;margin:0;white-space:nowrap;
+  font-size:clamp(56px,15.6vw,260px);
+}
+.hero h1{margin:22px 0 0}
+.split{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.04em}
+.split>span{display:inline-block;transform:translateY(105%)}
+.split.go>span{animation:rise .8s var(--ease) forwards;animation-delay:calc(var(--i) * 34ms)}
+@keyframes rise{to{transform:none}}
+@keyframes leave{to{transform:translateY(-105%)}}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;margin-top:40px;align-items:end}
+.lede{font-size:clamp(18px,1.7vw,22px);line-height:1.5;margin:0;max-width:34ch;color:var(--white)}
+.stack{display:grid;gap:9px;font-family:var(--mono);font-size:12px;color:var(--gray);border-top:1px solid var(--rule);padding-top:18px}
+.stack div{display:grid;grid-template-columns:150px 1fr;gap:12px}
+.stack b{color:var(--white);font-weight:500;text-transform:uppercase;letter-spacing:.08em}
+
+/* ---------- указатель работ ---------- */
+.index{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:96px 0 48px;text-align:center}
+.index>.wrap{width:100%}
+.about{padding:clamp(80px,10vw,130px) 0;border-top:1px solid var(--rule)}
+.about .eyebrow{color:var(--gray);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.about .eyebrow b{color:var(--white);font-weight:500}
+.about h2.giant{margin:0}
+.about .cols{margin-top:72px}
+.about-cta{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:56px;padding-top:36px;border-top:1px solid var(--rule)}
+.big-btn{padding:16px 28px;font-size:13px}
+.mail{font-family:var(--display);font-weight:500;font-size:clamp(22px,2.4vw,32px);
+  background:linear-gradient(var(--red),var(--red)) 0 100%/0 2px no-repeat;padding-bottom:4px;
+  transition:background-size .45s var(--ease),color .3s ease}
+.mail:hover{background-size:100% 2px;color:var(--red)}
+.sub{margin-top:72px;padding-top:32px;border-top:1px solid var(--rule);padding-left:calc(clamp(80px,9.7vw,140px) + clamp(16px,3vw,48px))}
+.sub h4{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(26px,3vw,42px);line-height:1;margin:0}
+.sub p{margin-top:16px}
+.sub+.grid{margin-top:28px}
+.index .head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:48px;text-align:left}
+.index h2{font-family:var(--display);font-weight:700;font-size:clamp(34px,4vw,56px);text-transform:uppercase;margin:0;line-height:1;color:var(--white)}
+.index .hint{color:var(--gray)}
+.thumbs{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin:0 auto;min-height:150px}
+.thumb{flex:0 0 auto;height:95px;width:76px;border-radius:4px;overflow:hidden;position:relative;
+  transition:width .45s var(--ease),height .45s var(--ease)}
+.thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.7);transition:filter .4s ease,transform .6s var(--ease)}
+.thumb.on{width:108px;height:135px}
+.thumb.on img,.thumb:hover img{filter:none;transform:scale(1.06)}
+.thumb .n{position:absolute;left:5px;top:4px;font-family:var(--mono);font-size:9px;color:var(--white);mix-blend-mode:difference}
+.idx-word.white{color:var(--white)}
+.thumb.tile{display:grid;place-items:center;background:var(--white);color:var(--red);font-family:var(--display);font-weight:700;font-size:26px;line-height:1;filter:grayscale(1) brightness(.7);transition:width .45s var(--ease),height .45s var(--ease),filter .4s ease}
+.thumb.tile span{transition:transform .6s var(--ease)}
+.thumb.tile.on,.thumb.tile:hover{filter:none}
+.thumb.tile.on span,.thumb.tile:hover span{transform:scale(1.06)}
+.idx-word{display:block;margin:34px auto 0;overflow:hidden;padding-bottom:.04em}
+.idx-word .split>span{transform:none}
+.idx-word .split.in>span{transform:translateY(105%);animation:rise .6s var(--ease) forwards;animation-delay:calc(var(--i) * 28ms)}
+.idx-word .split.out>span{animation:leave .28s var(--ease) forwards;animation-delay:calc(var(--i) * 14ms)}
+.idx-meta{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:22px;color:var(--gray)}
+.idx-meta a{color:var(--white);--roll:var(--red)}
+
+/* ---------- кейсы ---------- */
+.case{padding:clamp(72px,9vw,120px) 0;border-top:1px solid var(--rule);counter-increment:case}
+.case-head{display:grid;grid-template-columns:minmax(80px,140px) 1fr;gap:clamp(16px,3vw,48px);margin-bottom:44px}
+.case-no{font-family:var(--display);font-weight:700;font-size:clamp(48px,6vw,96px);line-height:.9;color:var(--red)}
+.case-no::before{content:counter(case,decimal-leading-zero)}
+.case.extra{counter-increment:none}
+.case.extra .case-no::before{content:"+"}
+.tag{color:var(--red);display:block;margin-bottom:12px}
+.case h3{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(38px,5.6vw,84px);line-height:.95;margin:0;letter-spacing:-.005em}
+.case p{max-width:64ch;margin:20px 0 0;color:#CFCCC6}
+.slate{margin-top:22px;display:flex;flex-wrap:wrap;gap:6px 0;font-family:var(--mono);font-size:11.5px;color:var(--gray);letter-spacing:.04em}
+.slate span{padding-right:14px;margin-right:14px;border-right:1px solid var(--rule)}
+.slate span:last-child{border:0;margin:0;padding:0}
+.note{margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--red)}
+
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.shot,.clip{margin:0;position:relative}
+.shot .frame,.clip .frame{overflow:hidden;border-radius:6px;background:var(--bg-2)}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease),opacity .5s ease;opacity:0}
+.shot img.loaded{opacity:1}
+.shot:hover img{transform:scale(1.045)}
+.crop34 .shot .frame{aspect-ratio:3/4}
+.crop11 .shot .frame{aspect-ratio:1/1}
+.ui .shot .frame{background:#08080a}
+.ui .shot img{height:auto}
+.clip .frame{aspect-ratio:9/16;background:#000}
+.clip video{width:100%;height:100%;background:#000}
+figcaption{font-family:var(--mono);font-size:11px;color:var(--gray);padding:10px 2px 0;letter-spacing:.02em}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:40px}
+.row p{margin-top:0}
+.lead-clip{max-width:420px}
+
+/* ---------- лента карусели ---------- */
+.strip-wrap{position:relative}
+.strip{
+  display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:0 var(--pad) 18px;margin:0 calc(var(--pad) * -1);
+  scrollbar-width:none;cursor:grab;scroll-padding-inline:var(--pad);
+}
+.strip::-webkit-scrollbar{display:none}
+.strip.drag{cursor:grabbing;scroll-snap-type:none}
+.strip .shot{flex:0 0 clamp(220px,22vw,300px);scroll-snap-align:start}
+.strip .shot .frame{aspect-ratio:9/16}
+.strip img{pointer-events:none;user-select:none}
+.strip-ctrl{display:flex;align-items:center;gap:10px;margin-top:18px}
+.strip-ctrl button{
+  width:46px;height:46px;border-radius:50%;border:1px solid var(--rule);
+  display:grid;place-items:center;font-family:var(--mono);font-size:16px;
+  transition:background .25s ease,border-color .25s ease,color .25s ease;
+}
+.strip-ctrl button:hover{background:var(--red);border-color:var(--red);color:var(--bg)}
+.strip-ctrl .count{font-family:var(--mono);font-size:12px;color:var(--gray);margin-left:8px}
+
+/* ---------- колонки «что ещё» ---------- */
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule)}
+.cols>div{padding:28px 28px 8px 0;border-right:1px solid var(--rule)}
+.cols>div+div{padding-left:28px}
+.cols>div:last-child{border-right:0}
+.cols .lab{color:var(--red);display:block;margin-bottom:14px}
+.cols h4{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:28px;line-height:1.05;margin:0 0 12px}
+.cols p{font-size:15.5px;margin:0;color:#BDBAB4}
+
+/* ---------- контакты ---------- */
+.contact{padding:clamp(90px,12vw,160px) 0 60px;border-top:1px solid var(--rule)}
+.contact .mono{color:var(--gray)}
+.contact .giant{display:inline-block;margin-top:18px;--lh:.92em;--roll:var(--white)}
+.contact .giant .r{height:1.02em;line-height:1.02em}
+.links{display:flex;flex-wrap:wrap;gap:16px 56px;margin-top:44px}
+.links .ln{font-family:var(--display);font-weight:500;font-size:clamp(24px,3vw,40px);line-height:1.2}
+.links .lbl{color:var(--red)}
+.links a{color:var(--white)}
+.links a{
+  font-family:var(--display);font-weight:500;font-size:clamp(24px,3vw,40px);text-transform:none;
+  background:linear-gradient(var(--red),var(--red)) 0 100%/0 2px no-repeat;padding-bottom:4px;
+  transition:background-size .45s var(--ease),color .3s ease;
+}
+.links a:hover{background-size:100% 2px;color:var(--red)}
+footer{display:flex;justify-content:flex-end;gap:16px;flex-wrap:wrap;padding:40px 0 48px;color:var(--gray);border-top:1px solid var(--rule);margin-top:90px}
+footer a{color:var(--white);--roll:var(--red)}
+
+/* ---------- курсор ---------- */
+#cursor{
+  position:fixed;left:0;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;
+  background:var(--red);z-index:200;pointer-events:none;opacity:0;
+  display:grid;place-items:center;
+  transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease),opacity .3s ease,background .3s ease;
+}
+#cursor.on{opacity:1}
+#cursor.link{width:44px;height:44px;margin:-22px 0 0 -22px;background:rgba(232,25,44,.35)}
+#cursor.big{width:64px;height:64px;margin:-32px 0 0 -32px;background:var(--red)}
+#cursor.press{background:var(--white)}
+#cursor.link.press{background:rgba(244,242,238,.6)}
+#cursor .lbl{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;color:var(--bg);opacity:0;transition:opacity .2s ease;font-weight:500}
+#cursor.big .lbl{opacity:1}
+
+/* ---------- прогресс и появление ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;background:var(--red)}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- адаптив ---------- */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:28px}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .cols{grid-template-columns:1fr}
+  .cols>div,.cols>div+div{padding:24px 0;border-right:0;border-bottom:1px solid var(--rule)}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .nav-links{display:none}
+  .nav .wrap{height:62px}
+  .hero{padding-top:118px}
+  .stack div{grid-template-columns:1fr;gap:2px}
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .g2.ui{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;gap:20px}
+  .case-head{grid-template-columns:1fr;gap:6px}
+  .sub{padding-left:0}
+  .thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:340px}
+  .about-cta{gap:18px}
+  .thumb,.thumb.on{width:100%;height:auto;aspect-ratio:4/5;transform:none}
+  .thumbs{min-height:0}
+  .thumb.on{outline:2px solid var(--red);outline-offset:2px}
+  .index .head{flex-direction:column;gap:8px}
+  .lead-clip{max-width:none}
+}
+@media (hover:none),(pointer:coarse){#cursor{display:none}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .split>span,.idx-word .split.in>span{transform:none!important;animation:none!important}
+  .rv{opacity:1;transform:none;transition:none}
+  .r>span{transition:none}
+  .shot img{transition:none;opacity:1}
+}
+
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="cursor" aria-hidden="true"><span class="lbl"></span></div>
+
+<nav class="nav"><div class="wrap">
+  <a href="#top" class="logo" data-roll aria-label="Наверх">НВ</a>
+  <div class="lang"><a href="../" hreflang="en" lang="en">EN</a><a href="./" class="on" aria-current="page" hreflang="ru" lang="ru">RU</a></div>
+</div></nav>
+
+<section class="index" id="top"><div class="wrap">
+  <div class="thumbs"><a class="thumb tile" href="#about" data-word="О СЕБЕ" data-white="1" aria-label="О себе"><span>НВ</span></a><a class="thumb" href="#lookbook" data-word="ЛУКБУК" aria-label="Каталог одежды без студии"><img src="../media/th-lookbook.jpg" alt=""></a><a class="thumb" href="#ads" data-word="РЕКЛАМА" aria-label="Коммерческие заказы"><img src="../media/th-ads.jpg" alt=""></a><a class="thumb" href="#carousel" data-word="КАРУСЕЛЬ" aria-label="Контент для соцсетей"><img src="../media/th-carousel.jpg" alt=""></a><a class="thumb" href="#heroine" data-word="ГЕРОИНЯ" aria-label="Один персонаж в шести локациях"><img src="../media/th-heroine.jpg" alt=""></a><a class="thumb" href="#story" data-word="АНИМАЦИЯ" aria-label="Рисованный сторителлинг"><img src="../media/th-story.jpg" alt=""></a><a class="thumb" href="#still" data-word="ПРЕДМЕТКА" aria-label="Предметная реклама и стилизация"><img src="../media/th-still.jpg" alt=""></a><a class="thumb" href="#brands" data-word="БРЕНДЫ" aria-label="Ролики для брендов"><img src="../media/th-brands.jpg" alt=""></a><a class="thumb" href="#sites" data-word="САЙТЫ" aria-label="Макеты сайтов в Claude Design"><img src="../media/th-sites.jpg" alt=""></a><a class="thumb tile" href="#contact" data-word="КОНТАКТЫ" data-white="1" aria-label="Контакты"><span>@</span></a></div>
+  <a class="giant idx-word" data-fit="ПРЕДМЕТКА" data-max="230" href="#lookbook" aria-live="polite"></a>
+</div></section>
+
+<section class="about" id="about"><div class="wrap rv"><h2 class="giant" data-fit="Никита Вознюк" aria-label="Никита Вознюк"><span class="ch" aria-hidden="true">Н</span><span class="ch" aria-hidden="true">и</span><span class="ch" aria-hidden="true">к</span><span class="ch" aria-hidden="true">и</span><span class="ch" aria-hidden="true">т</span><span class="ch" aria-hidden="true">а</span> <span class="ch" aria-hidden="true">В</span><span class="ch" aria-hidden="true">о</span><span class="ch" aria-hidden="true">з</span><span class="ch" aria-hidden="true">н</span><span class="ch" aria-hidden="true">ю</span><span class="ch" aria-hidden="true">к</span></h2><div class="hero-grid"><p class="lede">Более четырёх лет работаю с генеративными нейросетями. Закрываю задачу целиком — от концепции и промптов до готового ролика, ключ-арта или макета.</p><div class="stack"><div><b>Изображение</b><span>Midjourney · Flux · GPT Image · Nano Banana</span></div><div><b>Видео</b><span>Veo · Sora · Kling · Runway · Seedance</span></div><div><b>Звук</b><span>ElevenLabs · Suno · HeyGen · Hedra</span></div><div><b>Постпродакшн</b><span>After Effects · Premiere · DaVinci · Photoshop</span></div><div><b>Дизайн</b><span>Figma · Claude Design · n8n · API OpenAI и Anthropic</span></div></div></div><div class="cols"><div><h4>Не только рисую экраны</h4><p>С 2024 года работаю в двух мобильных стартапах и как дизайнер, и как продуктовый аналитик: разбираю рынок и конкурентов, спорю о логике продукта до того, как открыть макет. Прихожу к задаче с вопросом «зачем это пользователю», а не «как это красиво нарисовать».</p></div><div><h4>От закупки до карточки товара</h4><p>Вёл розничный магазин как индивидуальный предприниматель: закупки, ассортимент, продвижение, команда из трёх человек. Карточки товаров и рекламу делал сам — отсюда понимание, что должно быть в кадре, чтобы товар в итоге купили.</p></div><div><h4>Промпт-инжиниринг и автоматизации</h4><p>Написание, тестирование и оптимизация промптов под конкретную задачу. Сборка цепочек в n8n и Make, работа напрямую с API OpenAI и Anthropic.</p></div></div></div></section>
+
+<section class="case" id="lookbook"><div class="wrap rv"><div class="case-head"><div class="case-no" aria-hidden="true"></div><div><h3>Лукбук без студии</h3><p>Целая линейка образов, снятая без студии, моделей и фотографа. Один фон, один свет, одна логика кадра: ростовые планы, деталь посадки, вид со спины — всё готово под карточку товара.</p></div></div><div class="grid g3 crop34"><figure class="shot"><div class="frame"><img loading="lazy" src="../media/shirt_front.jpg" alt="Оверсайз-рубашка — фронт"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/shirt_back.jpg" alt="Оверсайз-рубашка — спина"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/plaid.jpg" alt="Фланелевая рубашка в клетку"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/polo_full.jpg" alt="Поло крупной вязки — ростовой"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/sweat.jpg" alt="Свитшот и джинсы — ростовой"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/knit_full.jpg" alt="Аранский свитер и кожаная юбка"></div></figure></div><div class="row"><div class="grid g2"><figure class="clip"><div class="frame" style="aspect-ratio:9/16"><video playsinline controls preload="metadata" width="720" height="1310" style="object-fit:cover" src="../media/hoodie.mp4" poster="../media/hoodie.jpg"></video></div></figure><figure class="clip"><div class="frame" style="aspect-ratio:9/16"><video playsinline controls preload="metadata" width="720" height="1310" style="object-fit:cover" src="../media/coat.mp4" poster="../media/coat.jpg"></video></div></figure></div><div><p>Тот же принцип в движении: модель, разворот, деталь ткани, проходка. Два ролика — уличный минимализм и премиальная линия в интерьере: одна и та же логика съёмки, разный характер света и темпа. Формат под ленту маркетплейса и соцсети.</p><div class="note">На клипах остаётся вотермарка сервиса генерации — исходники без неё доступны по запросу.</div></div></div></div></section><section class="case" id="ads"><div class="wrap rv"><div class="case-head"><div class="case-no" aria-hidden="true"></div><div><h3>Реклама для карточек и ленты</h3><p>Три ролика, сделанных под задачу продавца: проблема — продукт — действие, укладка в 15–27 секунд, субтитры, закадровый голос, финальная плашка с брендом. Формат вертикальный, под маркетплейс и соцсети.</p><div class="note">На двух роликах осталась вотермарка сервиса аватаров — версии без неё доступны по запросу.</div></div></div><div class="grid g3"><figure class="clip"><div class="frame" style="aspect-ratio:9/16"><video playsinline controls preload="metadata" width="720" height="1280" style="object-fit:cover" src="../media/alteya.mp4" poster="../media/alteya.jpg"></video></div></figure><figure class="clip"><div class="frame" style="aspect-ratio:9/16"><video playsinline controls preload="metadata" width="720" height="1280" style="object-fit:cover" src="../media/qeep.mp4" poster="../media/qeep.jpg"></video></div></figure><figure class="clip"><div class="frame" style="aspect-ratio:9/16"><video playsinline controls preload="metadata" width="720" height="1260" style="object-fit:cover" src="../media/champion.mp4" poster="../media/champion.jpg"></video></div></figure></div></div></section><section class="case" id="carousel"><div class="wrap rv"><div class="case-head"><div class="case-no" aria-hidden="true"></div><div><h3>Карусель FormCheck</h3><p>Обучающая карусель для фитнес-аккаунта: восемь слайдов о технике подъёма ног. Один и тот же персонаж и один зал на всех кадрах — меняются только поза и акцент. Поверх — собственная система вёрстки: плашка бренда, рубрика, заголовок с маркером, подсказки на фото и призыв в конце. Сценарий построен так, чтобы листали до последнего слайда: ошибка, узнавание, исправление, результат, практическая схема.</p></div></div><div class="strip-wrap"><div class="strip"><figure class="shot"><div class="frame"><img loading="lazy" src="../media/fc-1.jpg" alt="01 — Обложка — зацепка"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/fc-2.jpg" alt="02 — Узнаёшь себя?"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/fc-3.jpg" alt="03 — Исправляем"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/fc-4.jpg" alt="04 — Где делать"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/fc-5.jpg" alt="05 — Результат"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/fc-6.jpg" alt="06 — Бонус: замена"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/fc-7.jpg" alt="07 — Схема для зала"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/fc-8.jpg" alt="08 — Призыв к действию"></div></figure></div></div></div></section><section class="case" id="heroine"><div class="wrap rv"><div class="case-head"><div class="case-no" aria-hidden="true"></div><div><h3>Одна героиня, шесть локаций</h3><p>Серия о консистентности: один и тот же человек в шести локациях — неон Токио, снегопад, каменный переулок, уличный рынок, свет фар на мосту и крупный портрет. Лицо, пальто и характер света держатся от кадра к кадру — это то, что превращает набор картинок в кампанию.</p></div></div><div class="grid g3 crop34"><figure class="shot"><div class="frame"><img loading="lazy" src="../media/tokyo.jpg" alt="Токио"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/snow.jpg" alt="Снегопад"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/alley.jpg" alt="Переулок"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/market.jpg" alt="Рынок"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/bridge.jpg" alt="Мост, свет фар"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/grain.jpg" alt="Портрет крупно"></div></figure></div></div></section><section class="case" id="story"><div class="wrap rv"><div class="case-head"><div class="case-no" aria-hidden="true"></div><div><h3>Рисованный сторителлинг</h3><p>Четыре повествовательных ролика — от восемнадцати секунд до минуты с лишним: чернильный хоррор от первого лица, античная сага, история Рождества, хроника большого города. Каждый держит собственный рисованный стиль от первого кадра до последнего. На длинном хронометраже это перестаёт быть задачей генерации и становится задачей драматургии: палитра не плывёт между сценами, а темп обязан удержать зрителя до конца.</p></div></div><div class="grid g4"><figure class="clip"><div class="frame" style="aspect-ratio:3/4"><video playsinline controls preload="metadata" width="720" height="1316" style="object-fit:cover" src="../media/viy.mp4" poster="../media/viy.jpg"></video></div></figure><figure class="clip"><div class="frame" style="aspect-ratio:3/4"><video playsinline controls preload="metadata" width="720" height="952" style="object-fit:cover" src="../media/myth.mp4" poster="../media/myth.jpg"></video></div></figure><figure class="clip"><div class="frame" style="aspect-ratio:3/4"><video playsinline controls preload="metadata" width="640" height="846" style="object-fit:cover" src="../media/xmas.mp4" poster="../media/xmas.jpg"></video></div></figure><figure class="clip"><div class="frame" style="aspect-ratio:3/4"><video playsinline controls preload="metadata" width="720" height="952" style="object-fit:cover" src="../media/saga.mp4" poster="../media/saga.jpg"></video></div></figure></div></div></section><section class="case" id="still"><div class="wrap rv"><div class="case-head"><div class="case-no" aria-hidden="true"></div><div><h3>Фактура, свет, эпоха</h3><p>Рекламная предметка для косметики и парфюма — жёсткая тень на штукатурке, зелёный оникс, мокрый камень. И отдельная линия: реконструкция архивной фотографии шестидесятых, где убедительность держится на плёночном зерне, люминесцентном свете и дыме под потолком.</p></div></div><div class="grid g3 crop11"><figure class="shot"><div class="frame"><img loading="lazy" src="../media/perfume.jpg" alt="Парфюм — жёсткий свет"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/serum.jpg" alt="Сыворотка — оникс и мох"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/wabi.jpg" alt="Уход — фактура дерева"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/plate.jpg" alt="Керамика — мягкий свет"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/soviet.jpg" alt="Архив, 1960-е — статика"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/hands.jpg" alt="Деталь: руки и вода"></div></figure></div><div class="row"><div class="lead-clip"><figure class="clip"><div class="frame" style="aspect-ratio:9/16"><video playsinline controls preload="metadata" width="720" height="1292" style="object-fit:cover" src="../media/sovietv.mp4" poster="../media/sovietv.jpg"></video></div></figure></div><div><p>Статичный кадр, доведённый до движения: дым идёт вверх, лампа мерцает, люди чуть переступают. Приём для музейных, документальных и ретро-проектов.</p></div></div></div></section><section class="case" id="brands"><div class="wrap rv"><div class="case-head"><div class="case-no" aria-hidden="true"></div><div><h3>Ролики для брендов</h3><p>Четыре ролика в языке конкретных брендов: распаковка мебели из коробки за восемь секунд, история с маскотом на двадцать пять, ритейл и новогодняя классика. Каждый сделан так, как его сделал бы бренд, — с его тональностью, палитрой и продуктом в кадре.</p></div></div><div class="grid g4"><figure class="clip"><div class="frame" style="aspect-ratio:9/16"><video playsinline controls preload="metadata" width="720" height="1292" style="object-fit:cover" src="../media/skoya.mp4" poster="../media/skoya.jpg"></video></div></figure><figure class="clip"><div class="frame" style="aspect-ratio:9/16"><video playsinline controls preload="metadata" width="720" height="1280" style="object-fit:cover" src="../media/spaffy.mp4" poster="../media/spaffy.jpg"></video></div></figure><figure class="clip"><div class="frame" style="aspect-ratio:9/16"><video playsinline controls preload="metadata" width="720" height="1280" style="object-fit:cover" src="../media/oreo.mp4" poster="../media/oreo.jpg"></video></div></figure><figure class="clip"><div class="frame" style="aspect-ratio:9/16"><video playsinline controls preload="metadata" width="720" height="1310" style="object-fit:cover" src="../media/cola.mp4" poster="../media/cola.jpg"></video></div></figure></div></div></section><section class="case" id="sites"><div class="wrap rv"><div class="case-head"><div class="case-no" aria-hidden="true"></div><div><h3>Сайты и лендинги</h3><p>Два макета: новостной портал о кино и интернет-магазин. Разные задачи и разный визуальный язык, общий подход — сначала логика экрана и путь человека, потом декор.</p></div></div><div class="sub"><h4>Marquee — портал о кассовых сборах</h4><p>Шесть экранов, дизайн-система и адаптив под 390. Визуальный язык взят у американских кинотеатров тридцатых–пятидесятых — латунь, оксблад, лампы на маркизе, — но подчинён цифрам: на экране правит сумма сборов, а декор уходит в рамку.</p></div><div class="grid g2 ui"><figure class="shot"><div class="frame"><img loading="lazy" src="../media/ui-box-office.jpg" alt="Дизайн-система: токены, типографика, состояния"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/ui-home.jpg" alt="Главная — сборы недели как герой экрана"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/ui-title-page.jpg" alt="Карточка фильма — метрики, график, франшиза"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/ui-release-calendar.jpg" alt="Календарь релизов — фильтры как интерфейс"></div></figure></div><div class="sub"><h4>«Подъём» — магазин коробок с шарами</h4><p>Интернет-магазин коробок-сюрпризов с гелиевыми шарами: доставка по Минску за два часа, круглосуточно. Весь макет подчинён одному — довести человека до заказа, пока он ещё в настроении. Заказ оформляется на одном экране за семь полей, без регистрации, подтверждение приходит в мессенджер.</p></div><div class="grid g3 ui"><figure class="shot"><div class="frame"><img loading="lazy" src="../media/ui-podjom-home.jpg" alt="Главная — оффер, поводы, хиты, четыре шага"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/ui-podjom-product.jpg" alt="Карточка товара — конфигуратор и слоты доставки"></div></figure><figure class="shot"><div class="frame"><img loading="lazy" src="../media/ui-podjom-checkout.jpg" alt="Оформление — один экран, семь полей, без регистрации"></div></figure></div></div></section>
+
+<section class="contact" id="contact"><div class="wrap rv">
+  <a class="giant" href="mailto:vozniuknik6@gmail.com" data-fit="Написать" data-max="300" data-roll>Написать</a>
+  <div class="links">
+    <div class="ln"><span class="lbl">Почта:</span> <a href="mailto:vozniuknik6@gmail.com">vozniuknik6@gmail.com</a></div>
+    <div class="ln"><span class="lbl">Телеграм:</span> <a href="https://t.me/nik_voznyuk" target="_blank" rel="noopener">@nik_voznyuk</a></div>
+  </div>
+  <footer class="mono"><a href="#top" class="" data-roll >Наверх ↑</a></footer>
+</div></section>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+
+  /* ---------- разбивка на буквы ---------- */
+  function splitInto(el, text){
+    el.textContent = '';
+    var wrap = document.createElement('span');
+    wrap.className = 'split';
+    wrap.setAttribute('aria-hidden', 'true');
+    Array.from(text).forEach(function(c, i){
+      var s = document.createElement('span');
+      s.textContent = c === ' ' ? ' ' : c;
+      s.style.setProperty('--i', i);
+      wrap.appendChild(s);
+    });
+    el.appendChild(wrap);
+    return wrap;
+  }
+
+  /* ---------- перекат букв при наведении ---------- */
+  $$('[data-roll]').forEach(function(el){
+    var text = el.textContent.trim();
+    if (!el.getAttribute('aria-label')) el.setAttribute('aria-label', text);
+    el.textContent = '';
+    Array.from(text).forEach(function(c, i){
+      var r = document.createElement('span');
+      r.className = 'r';
+      r.setAttribute('aria-hidden', 'true');
+      r.style.setProperty('--i', i);
+      var ch = c === ' ' ? ' ' : c;
+      r.innerHTML = '<span></span><span></span>';
+      r.children[0].textContent = ch;
+      r.children[1].textContent = ch;
+      el.appendChild(r);
+    });
+  });
+
+  /* ---------- подгонка гигантских слов под ширину ---------- */
+  var probe = document.createElement('span');
+  probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;left:-9999px;top:0';
+  document.body.appendChild(probe);
+  function fit(){
+    $$('[data-fit]').forEach(function(el){
+      var ref = el.getAttribute('data-fit');
+      var cs = getComputedStyle(el);
+      probe.style.fontFamily = cs.fontFamily;
+      probe.style.fontWeight = cs.fontWeight;
+      probe.style.letterSpacing = cs.letterSpacing;
+      probe.style.textTransform = cs.textTransform;
+      probe.style.fontSize = '100px';
+      probe.textContent = ref;
+      var avail = el.parentNode.clientWidth;
+      var pad = parseFloat(getComputedStyle(el.parentNode).paddingLeft) + parseFloat(getComputedStyle(el.parentNode).paddingRight);
+      avail -= pad;
+      var size = Math.min(100 * avail / probe.offsetWidth * 0.985, parseFloat(el.getAttribute('data-max') || 9999));
+      el.style.fontSize = size + 'px';
+    });
+  }
+  var fitT;
+  window.addEventListener('resize', function(){ clearTimeout(fitT); fitT = setTimeout(fit, 120); });
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+
+  /* ---------- имя на первом экране ---------- */
+  var heroName = $('.hero h1');
+  if (heroName) {
+    var hw = splitInto(heroName, heroName.getAttribute('data-text'));
+    if (reduce) hw.classList.add('go');
+    else requestAnimationFrame(function(){ setTimeout(function(){ hw.classList.add('go'); }, 120); });
+  }
+
+  /* ---------- указатель работ ---------- */
+  var idx = $('.index');
+  if (idx) {
+    var word = $('.idx-word', idx);
+    var thumbs = $$('.thumb', idx);
+    var current = -1, swapT = null, cycleT = null, userTouched = false;
+
+    function show(i, instant){
+      if (i === current) return;
+      current = i;
+      thumbs.forEach(function(t, k){ t.classList.toggle('on', k === i); });
+      var t = thumbs[i];
+      var text = t.getAttribute('data-word');
+      word.setAttribute('href', t.getAttribute('href'));
+      var white = t.hasAttribute('data-white');
+      word.setAttribute('aria-label', text);
+      clearTimeout(swapT);
+      var old = $('.split', word);
+      function put(){
+        word.classList.toggle('white', white);
+        var w = splitInto(word, text);
+        if (!instant && !reduce) w.classList.add('in');
+      }
+      if (old && !instant && !reduce) {
+        old.classList.remove('in');
+        old.classList.add('out');
+        swapT = setTimeout(put, 200);
+      } else put();
+    }
+    thumbs.forEach(function(t, i){
+      t.addEventListener('mouseenter', function(){ userTouched = true; show(i); });
+      t.addEventListener('focus', function(){ userTouched = true; show(i); });
+    });
+    setTimeout(function(){ show(1, reduce); }, reduce ? 0 : 150);
+
+    /* без мыши — слова сменяются сами, пока указатель на экране */
+    if (!finePointer && !reduce) {
+      var visible = false;
+      new IntersectionObserver(function(e){ visible = e[0].isIntersecting; }, {threshold: .3}).observe(idx);
+      cycleT = setInterval(function(){
+        if (visible && !userTouched) show((current + 1) % thumbs.length);
+      }, 2200);
+      idx.addEventListener('touchstart', function(){ userTouched = true; }, {passive: true});
+    }
+  }
+
+  /* ---------- курсор ---------- */
+  if (finePointer) {
+    var cur = document.getElementById('cursor');
+    var lbl = $('.lbl', cur);
+    var mx = -100, my = -100, cx = -100, cy = -100, started = false;
+    window.addEventListener('mousemove', function(e){
+      mx = e.clientX; my = e.clientY;
+      if (!started) { started = true; cx = mx; cy = my; cur.classList.add('on'); loop(); }
+    }, {passive: true});
+    document.addEventListener('mouseleave', function(){ cur.classList.remove('on'); });
+    document.addEventListener('mouseenter', function(){ if (started) cur.classList.add('on'); });
+    function loop(){
+      var k = reduce ? 1 : 0.2;
+      cx += (mx - cx) * k; cy += (my - cy) * k;
+      cur.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
+      requestAnimationFrame(loop);
+    }
+    window.addEventListener('mousedown', function(){ cur.classList.add('press'); });
+    window.addEventListener('mouseup', function(){ cur.classList.remove('press'); });
+    document.addEventListener('mouseover', function(e){
+      var big = e.target.closest('[data-cursor]');
+      var link = e.target.closest('a,button,.shot,.clip,.strip');
+      cur.classList.toggle('big', !!big);
+      cur.classList.toggle('link', !big && !!link);
+      if (big) lbl.textContent = big.getAttribute('data-cursor');
+    });
+  }
+
+  /* ---------- полоса прогресса ---------- */
+  var bar = document.getElementById('progress');
+  var nav = $('.nav');
+  function progress(){
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? window.scrollY / h * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive: true});
+  window.addEventListener('resize', progress);
+  progress();
+
+  /* ---------- плавное проявление картинок ---------- */
+  $$('.shot img').forEach(function(img){
+    function ok(){ img.classList.add('loaded'); }
+    if (img.complete) ok(); else { img.addEventListener('load', ok); img.addEventListener('error', ok); }
+  });
+
+  /* ---------- появление секций при прокрутке ---------- */
+  var rv = $$('.rv');
+  if (reduce) rv.forEach(function(s){ s.classList.add('in'); });
+  else {
+    var tick = false;
+    var check = function(){
+      tick = false;
+      for (var i = rv.length - 1; i >= 0; i--) {
+        if (rv[i].getBoundingClientRect().top < window.innerHeight * 0.9) { rv[i].classList.add('in'); rv.splice(i, 1); }
+      }
+    };
+    window.addEventListener('scroll', function(){ if (!tick) { tick = true; requestAnimationFrame(check); } }, {passive: true});
+    window.addEventListener('resize', check);
+    check();
+    setTimeout(function(){ rv.slice().forEach(function(s){ s.classList.add('in'); }); }, 6000);
+  }
+
+  /* ---------- лента карусели: перетаскивание и стрелки ---------- */
+  $$('.strip-wrap').forEach(function(wrap){
+    var strip = $('.strip', wrap);
+    var slides = $$('.shot', strip);
+    var step = function(){ return slides[0].getBoundingClientRect().width + 14; };
+    if (finePointer) {
+      var down = false, sx = 0, sl = 0, moved = false;
+      strip.addEventListener('pointerdown', function(e){
+        if (e.pointerType !== 'mouse') return;
+        down = true; moved = false; sx = e.clientX; sl = strip.scrollLeft;
+      });
+      window.addEventListener('pointermove', function(e){
+        if (!down) return;
+        var d = e.clientX - sx;
+        if (Math.abs(d) > 4) { moved = true; strip.classList.add('drag'); }
+        strip.scrollLeft = sl - d;
+      });
+      window.addEventListener('pointerup', function(){
+        if (!down) return;
+        down = false; strip.classList.remove('drag');
+        if (moved) strip.scrollTo({left: Math.round(strip.scrollLeft / step()) * step(), behavior: 'smooth'});
+      });
+    }
+  });
+
+  /* ---------- видео: только по нажатию; запустил один — остальные встают на паузу ---------- */
+  $$('.clip video').forEach(function(v, _, all){
+    v.addEventListener('play', function(){
+      $$('.clip video').forEach(function(o){ if (o !== v && !o.paused) o.pause(); });
+    });
+  });
+})();
+
+</script>
+</body>
+</html>
